@@ -96,7 +96,7 @@ function Todo({ className }) {
         />
         <button onClick={handleBtnClick}>{btnText}</button>
       </div>
-      <div className='mb-20'>
+      <div>
         {renderList()}
       </div>
     </div>

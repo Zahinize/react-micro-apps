@@ -15,13 +15,13 @@ function App() {
         React Micro Apps
       </h1>
       <div className='d-flex d-wrap d-y-start col-gap-20'>
-        <Card heading='Counter App'>
-          <Counter className="mb-20" />
+        <Card heading='Counter'>
+          <Counter />
         </Card>
-        <Card heading="Todo App">
-          <Todo className="mb-20" />
+        <Card heading="Todo">
+          <Todo />
         </Card>
-        <Card heading="Timer App">
+        <Card heading="Timer">
           <Timer />
         </Card>
       </div>
