@@ -1,5 +1,6 @@
 import { useState, useEffect, useDebugValue } from 'react'
 import reactLogo from './assets/react.svg'
+import lovelogo from './assets/love.png';
 import viteLogo from '/vite.svg'
 import './App.css';
 import Todo from './Todo';
@@ -10,11 +11,15 @@ import Timer from './Timer';
 function App() {
 
   return (
-    <>
-      <h1>
-        React Micro Apps
-      </h1>
-      <div className='d-flex d-wrap d-y-start col-gap-20'>
+    <div className='container d-flex d-column row-gap-6x'>
+      <header>
+        <h1 className='mb-20 mt-0'>
+          React Micro Apps
+        </h1>
+        <p className='mt-0 mb-10'>A collection of utility React apps that we use daily.</p>
+        <p className='mt-0 mb-20'>No frameworks. Pure vanilla React.</p>
+      </header>
+      <div className='d-flex d-wrap d-y-start col-gap-x'>
         <Card heading='Counter'>
           <Counter />
         </Card>
@@ -25,10 +30,12 @@ function App() {
           <Timer />
         </Card>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      <p className="c-light d-flex d-x-center d-y-center">
+        A project built with 
+        <img className='ml-5 mr-5' width="16" height="16" src={lovelogo} alt="filled-like"/>
+        by <a className='ml-5' target='_blank' href="https://www.linkedin.com/in/zahinalwa/">Zahin Alwa.</a>
       </p>
-    </>
+    </div>
   )
 }
 
