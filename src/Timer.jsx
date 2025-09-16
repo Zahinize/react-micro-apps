@@ -32,7 +32,7 @@ function Timer() {
   return (
     <>
       <h3>{formatTime(timer)}</h3>
-      <button className="mr-10" onClick={handleResetBtnClick}>Reset</button>
+      <button className="alert mr-10" onClick={handleResetBtnClick}>Reset</button>
       <button onClick={() => setPlay(!play)}>{playText}</button>
     </>
   )

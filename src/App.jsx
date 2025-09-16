@@ -7,6 +7,7 @@ import Todo from './Todo';
 import Counter from './Counter';
 import Card from './Card';
 import Timer from './Timer';
+import Stopwatch from './Stopwatch';
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
         </Card>
         <Card heading="Timer">
           <Timer />
+        </Card>
+        <Card heading="Stopwatch">
+          <Stopwatch />
         </Card>
       </div>
       <p className="c-light d-flex d-x-center d-y-center">
