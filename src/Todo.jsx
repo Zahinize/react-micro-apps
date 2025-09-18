@@ -4,10 +4,6 @@ function Todo({ className }) {
   const [inputVal, setInputVal] = useState('');
   const [itemId, setItemId] = useState('');
   const [list, setList] = useState([]);
-  const inputStyle = {
-    height: '35px',
-    width: '200px'
-  };
   const btnText = itemId ? 'Update' : 'Save';
 
   function renderList() {
@@ -85,12 +81,12 @@ function Todo({ className }) {
 
   return (
     <div className={className}>
-      <div className='mb-20'>
+      <div className='d-flex mb-20 input-group'>
         <input
+          id="todo-input"
           placeholder='what do you want to do?'
           onKeyUp={handleInputKeyPress}
           onChange={e => setInputVal(e.target.value)}
-          style={inputStyle}
           type="text"
           value={inputVal}
         />
