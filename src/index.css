@@ -1,12 +1,14 @@
 :root {
   --primary-color: #242424;
   --primary-bg: #bdc3c7;
-  --secondary-bg: #ecf0f1;
   --light-color: #888;
-  --link-color: #646cff;
-  --link-hover-color: #535bf2;
+  --theme-color: #4f39f6;
+  --theme-hover-color: #432dd7;
+  --theme-light-color: #f6f3f4;
+  --theme-light-hover-color: #ebe6e7;
   --alert-color: #c0392b;
   --success-color: #27ae60;
+
   --input-height: 40px;
   --input-width: 200px;
 
@@ -32,11 +34,12 @@
 }
 a {
   font-weight: 500;
-  color: var(--link-color);
+  color: var(--theme-color);
   text-decoration: inherit;
+  transition: all .25s;
 }
 a:hover {
-  color: var(--link-hover-color);
+  color: var(--theme-hover-color);
 }
 body {
   margin: 0;
@@ -51,23 +54,30 @@ h1 {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  background-color: var(--primary-color);
+  background-color: var(--theme-color);
   color: #f9f9f9;
   cursor: pointer;
   padding: 0.5em 1em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  transition: border-color 0.25s;
+  transition: all 0.25s;
+}
+button:hover {
+  background-color: var(--theme-hover-color);
 }
 button.outline {
   background: transparent;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--theme-color);
   color: 1px solid var(--primary-color);
 }
 button.alert {
-  background: var(--alert-color);
-  color: var(#fff);
+  background: var(--theme-light-color);
+  border-color: var(--light-color);
+  color: var(--primary-color);
+}
+button.alert:hover {
+  background: var(--theme-light-hover-color);
 }
 
 /** Flex Utilities **/
@@ -158,7 +168,7 @@ button.alert {
 .card {
   border: 1px solid var(--primary-color);
   border-radius: 0.35em;
-  background: var(--secondary-bg);
+  background: #fff;
   padding: 1em;
 }
 /** Input Group component: Input + Button **/
