@@ -24,6 +24,13 @@ function WatchTimer({ play = false, reset = false, onUpdate }) {
 
       setIntervalId(interval);
     }
+
+    return () => {
+      /** Remove side effects when a component is unmounted. **/
+      setTimer(0);
+      intervalId ? clearInterval(intervalId) : null;
+      setIntervalId(null);
+    };
   }, [reset, play]);
 
   /** Note: The below useEffect() hook re-renders the parent <StopWatch /> component every time

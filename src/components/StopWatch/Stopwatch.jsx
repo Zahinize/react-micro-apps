@@ -44,7 +44,9 @@ function Stopwatch() {
     return arr.length ? (
       <div className="mb-20">
         <h4 className="d-flex mt-0 mb-20">Laps</h4>
-        {list}
+        <div className="lap-container">
+          {list}
+        </div>
       </div>
     ) : null;
   }

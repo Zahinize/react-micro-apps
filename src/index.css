@@ -184,3 +184,15 @@ button.alert:hover {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
+.progress-container,
+.progress-bar {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 10px;
+  position: relative;
+  transition: width .25s;
+}
+.progress-bar {
+  background: var(--theme-color);
+  width: 0px;
+}

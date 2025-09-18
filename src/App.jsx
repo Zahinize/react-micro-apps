@@ -8,6 +8,7 @@ import Counter from './Counter';
 import Card from './Card';
 import Timer from './Timer';
 import Stopwatch from './components/StopWatch/Stopwatch';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
 
@@ -33,11 +34,14 @@ function App() {
         <Card heading="Stopwatch">
           <Stopwatch />
         </Card>
+        <Card heading='Progress Bar'>
+          <ProgressBar width={300} />
+        </Card>
       </div>
       <p className="c-light d-flex d-x-center d-y-center">
         A project built with 
         <img className='ml-5 mr-5' width="16" height="16" src={lovelogo} alt="filled-like"/>
-        by <a className='ml-5' target='_blank' href="https://www.linkedin.com/in/zahinalwa/">Zahin Alwa.</a>
+        by <a className='ml-5' target='_blank' href="https://www.linkedin.com/in/zahinalwa/">Zahin.</a>
       </p>
     </div>
   )
