@@ -1,38 +1,23 @@
 import { useState, useEffect } from "react";
-import { formatTime, setMinMaxItems } from "./utils";
+import { setMinMaxItems } from "../../utils";
+import WatchTimer from "./WatchTimer";
 
 function Stopwatch() {
-  const [play, setPlay] = useState(false);
+  const [lapArr, setLapArr] = useState([]);
+  let [reset, setReset] = useState(false);
+  let [play, setPlay] = useState(false);
+  let [count, setCount] = useState(0);
   const playText = play ? 'Pause' : 'Play';
-  let [timer, setTimer] = useState(0);
-  let [lapArr, setLapArr] = useState([]);
-  let [intervalId, setIntervalId] = useState(null);
 
-  useEffect(() => {
-    if (!play) {
-      intervalId ? clearInterval(intervalId) : null;
-      setIntervalId(null);
-      return;
-    }
-
-    if (!intervalId && play) {
-      let interval = setInterval(() => {
-        timer = timer + 1;
-        setTimer(timer);
-        // console.log('lapArr: ', lapArr);
-      }, 1000);
-
-      setIntervalId(interval);
-      if (!lapArr.length) {
-        lapArr.push({
-          timeStamp: Date.now(),
-          seconds: 0,
-          count: 0
-        });
-        setLapArr(lapArr);
-      }
-    }
-  }, [play, intervalId]);
+  /** Note: The sole purpose of this "handleChildUpdate" function is to establish an update connection
+   * between parent (Stopwatch) component and child (WatchTimer) component as a callback.
+   * The parent component will not re-render when a child component has an active side-effect (such as setInterval)
+   * which will update its state repeatedly. To ensure the parent component gets updated evertime the child gets re-render,
+   * we must send a state callback from parent to child and invoke it after the corresponding child state is updated.
+  **/
+  function handleChildUpdate(value) {
+    setCount(value);
+  }
 
   function renderLapComponent() {
     if (!lapArr.length) return;
@@ -66,8 +51,22 @@ function Stopwatch() {
   
   function handleResetBtnClick() {
     setPlay(false);
-    setTimer(0);
+    setReset(true);
     setLapArr([]);
+  }
+
+  function handlePlayBtnClick() {
+    setPlay(!play);
+    setReset(false);
+
+    if (!lapArr.length) {
+      lapArr.push({
+        timeStamp: Date.now(),
+        seconds: 0,
+        count: 0
+      });
+      setLapArr(lapArr);
+    }
   }
 
   function handleLapBtnClick() {
@@ -89,11 +88,16 @@ function Stopwatch() {
 
   return (
     <>
-      <h3 className="mt-0 mb-20">{formatTime(timer)}</h3>
+      <WatchTimer
+        play={play}
+        reset={reset}
+        onUpdate={handleChildUpdate}
+      />
+      {/* <h3 className="mt-0 mb-20">Parent component: {count}</h3> */}
       {renderLapComponent()}
       <button className="alert mr-10" onClick={handleResetBtnClick}>Reset</button>
       <button className="outline mr-10" onClick={handleLapBtnClick}>Lap</button>
-      <button onClick={() => setPlay(!play)}>{playText}</button>
+      <button onClick={handlePlayBtnClick}>{playText}</button>
     </>
   )
 }

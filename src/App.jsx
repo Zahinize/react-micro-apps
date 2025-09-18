@@ -7,7 +7,7 @@ import Todo from './Todo';
 import Counter from './Counter';
 import Card from './Card';
 import Timer from './Timer';
-import Stopwatch from './Stopwatch';
+import Stopwatch from './components/StopWatch/Stopwatch';
 
 function App() {
 
