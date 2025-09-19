@@ -6,6 +6,7 @@ function WatchTimer({ play = false, reset = false, onUpdate }) {
   let [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
+    console.log("WatchTimer -> useEffect: play: ", play, ", reset: ", reset);
     if (!play) {
       intervalId ? clearInterval(intervalId) : null;
       setIntervalId(null);
@@ -27,9 +28,9 @@ function WatchTimer({ play = false, reset = false, onUpdate }) {
 
     return () => {
       /** Remove side effects when a component is unmounted. **/
-      setTimer(0);
+      console.log("WatchTimer: Component unmounted now!");
       intervalId ? clearInterval(intervalId) : null;
-      setIntervalId(null);
+      intervalId ? setIntervalId(null) : null;
     };
   }, [reset, play]);
 

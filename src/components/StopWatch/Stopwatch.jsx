@@ -7,7 +7,10 @@ function Stopwatch() {
   let [reset, setReset] = useState(false);
   let [play, setPlay] = useState(false);
   let [count, setCount] = useState(0);
-  const playText = play ? 'Pause' : 'Play';
+  const STATUS_PLAY = "Play";
+  const STATUS_PAUSE = "Pause";
+  const STATUS_RESUME = "Resume";
+  const playText = getPlayText();
 
   /** Note: The sole purpose of this "handleChildUpdate" function is to establish an update connection
    * between parent (Stopwatch) component and child (WatchTimer) component as a callback.
@@ -17,6 +20,16 @@ function Stopwatch() {
   **/
   function handleChildUpdate(value) {
     setCount(value);
+  }
+
+  function getPlayText() {
+    if (play) {
+      return STATUS_PAUSE;
+    } else if (!play && count) {
+      return STATUS_RESUME;
+    } else {
+      return STATUS_PLAY;
+    }
   }
 
   function renderLapComponent() {
@@ -88,7 +101,7 @@ function Stopwatch() {
     setLapArr(lapArr);
   }
 
-  return (
+  return ( 
     <>
       <WatchTimer
         play={play}

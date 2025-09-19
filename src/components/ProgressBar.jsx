@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 
 function ProgressBar({ width = 300 }) {
-  let [play, setPlay] = useState(false);
   const [animateEl, setAnimateEl] = useState(null);
+  const [play, setPlay] = useState(false);
   const playText = play ? 'Pause' : 'Play';
+  const STATUS_REST = "At rest";
+  const STATUS_RUNNING = "Running...";
+  const STATUS_PAUSED = "Paused";
+  const STATUS_FINISHED = "Finished";
+  const [status, setStatus] = useState(STATUS_REST);
 
   useEffect(() => {
     const barEl = document.getElementById('progress-bar');
@@ -22,8 +27,8 @@ function ProgressBar({ width = 300 }) {
     animEl.pause();
     setAnimateEl(animEl);
     animEl.onfinish = function() {
-      console.log('Progress Bar is finished');
       setPlay(false);
+      setStatus(STATUS_FINISHED);
     }
 
     return () => {
@@ -33,12 +38,15 @@ function ProgressBar({ width = 300 }) {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect: play: ", play);
-    if (play) {
-      animateEl ? animateEl.play() : null;
-    } else {
-      animateEl ? animateEl.pause() : null;
+    if (!animateEl) return;
+    if (!play) {
+      animateEl.pause();
+      (status !== STATUS_FINISHED) ? setStatus(STATUS_PAUSED) : null;
+      return;
     }
+
+    animateEl.play();
+    setStatus(STATUS_RUNNING);
   }, [play]);
 
   function handlePlayBtnClick() {
@@ -56,9 +64,19 @@ function ProgressBar({ width = 300 }) {
     )
   }
 
+  function renderStatus() {
+    return (
+      <p className="mt-0 mb-20">
+        <strong>Status: </strong>
+        <span>{status}</span>
+      </p>
+    )
+  }
+
   return (
     <>
       {renderBar()}
+      {renderStatus()}
       <button onClick={handlePlayBtnClick}>{playText}</button>
     </>
   )
