@@ -16,9 +16,9 @@ function App() {
     <div className='container d-flex d-column row-gap-6x'>
       <header>
         <h1 className='mb-20 mt-0'>
-          React Micro Apps
+          React Components
         </h1>
-        <p className='mt-0 mb-10'>A collection of utility React apps that we use daily.</p>
+        <p className='mt-0 mb-10'>A collection of utility React components & apps.</p>
         <p className='mt-0 mb-20'>No frameworks. Pure vanilla React.</p>
       </header>
       <div className='d-flex d-wrap d-y-start col-gap-x'>

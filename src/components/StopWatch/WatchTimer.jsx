@@ -6,7 +6,6 @@ function WatchTimer({ play = false, reset = false, onUpdate }) {
   let [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
-    console.log("WatchTimer -> useEffect: play: ", play, ", reset: ", reset);
     if (!play) {
       intervalId ? clearInterval(intervalId) : null;
       setIntervalId(null);

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 function ProgressBar({ width = 300 }) {
   const [animateEl, setAnimateEl] = useState(null);
+  const [duration, setDuration] = useState(5);
   const [play, setPlay] = useState(false);
   const playText = play ? 'Pause' : 'Play';
   const STATUS_REST = "At rest";
@@ -19,7 +20,7 @@ function ProgressBar({ width = 300 }) {
         { width: barWidth + "px" }
       ],
       {
-        duration: 5000,
+        duration: (duration*1000),
         easing: "ease-in",
       }
     );
@@ -35,7 +36,7 @@ function ProgressBar({ width = 300 }) {
       animEl ? animEl.cancel() : null;
       animEl ? setAnimateEl(null) : null;
     };
-  }, []);
+  }, [duration]);
 
   useEffect(() => {
     if (!animateEl) return;
@@ -73,10 +74,30 @@ function ProgressBar({ width = 300 }) {
     )
   }
 
+  function renderSettings() {
+    return (
+      <div className="mb-20 d-flex d-x-center d-y-center">
+        <strong className="mr-5">Duration: </strong>
+        <select
+          id="duration"
+          className="dropdown"
+          value={duration}
+          onChange={e => setDuration(e.target.value)}
+        >
+          <option value={5}>5s</option>
+          <option value={10}>10s</option>
+          <option value={15}>15s</option>
+          <option value={20}>20s</option>
+        </select>
+      </div>
+    )
+  }
+
   return (
     <>
       {renderBar()}
       {renderStatus()}
+      {renderSettings()}
       <button onClick={handlePlayBtnClick}>{playText}</button>
     </>
   )
