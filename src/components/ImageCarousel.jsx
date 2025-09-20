@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
-function ImageCarousel({ width = 500 }) {
+function ImageCarousel() {
   const [translateX, setTranslateX] = useState(0);
   const carouselRef = useRef(null);
+  let translateWidthRef = useRef(0);
+  let maxTranslateWidthRef = useRef(0);
   const imgArr = [
     "https://images.unsplash.com/photo-1757263005786-43d955f07fb1?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1506220926022-cc5c12acdb35?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -10,8 +12,18 @@ function ImageCarousel({ width = 500 }) {
     "https://images.unsplash.com/photo-1744749583027-eaef2cf563ba?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1757664171309-f5c082f8d64c?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   ];
-  const translateWidth = width;
-  const maxTranslateWidth = translateWidth * imgArr.length;
+
+  useEffect(() => {
+    let parentWidth = carouselRef.current.parentElement.offsetWidth;
+
+    if (!translateWidthRef.current) {
+      translateWidthRef.current = parentWidth;
+    }
+
+    if (!maxTranslateWidthRef.current) {
+      maxTranslateWidthRef.current = translateWidthRef.current * imgArr.length;
+    }
+  });
 
   useEffect(() => {
     carouselRef.current.style.transform = `translateX(${translateX}px)`;
@@ -21,8 +33,8 @@ function ImageCarousel({ width = 500 }) {
     const id = e.target.id;
 
     if (id == "nav-next") {
-      const nextTranslate = translateX - translateWidth;
-      const isLastImg = Math.abs(nextTranslate) === maxTranslateWidth;
+      const nextTranslate = translateX - translateWidthRef.current;
+      const isLastImg = Math.abs(nextTranslate) === maxTranslateWidthRef.current;
 
       if (!isLastImg) {
         setTranslateX(nextTranslate);
@@ -34,7 +46,7 @@ function ImageCarousel({ width = 500 }) {
     }
 
     // Previous Button is clicked in this case
-    setTranslateX(translateX + translateWidth);
+    setTranslateX(translateX + translateWidthRef.current);
   }
 
   function renderCarousel() {

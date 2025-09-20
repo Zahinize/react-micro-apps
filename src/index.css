@@ -238,3 +238,18 @@ button.alert:hover {
     justify-content: center;
   }
 }
+
+/** Mobile device breakpoint **/
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 300px;
+    width: 300px;
+  }
+  .carousel-container > .carousel {
+    height: 284px;
+    width: 1500px;
+  }
+  .carousel img {
+    width: 280px;
+  }
+}
