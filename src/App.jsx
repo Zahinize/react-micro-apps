@@ -9,6 +9,7 @@ import Card from './Card';
 import Timer from './Timer';
 import Stopwatch from './components/StopWatch/Stopwatch';
 import ProgressBar from './components/ProgressBar';
+import ImageCarousel from './components/ImageCarousel';
 
 function App() {
 
@@ -16,9 +17,9 @@ function App() {
     <div className='container d-flex d-column row-gap-6x'>
       <header>
         <h1 className='mb-20 mt-0'>
-          React Components
+          React-Interview
         </h1>
-        <p className='mt-0 mb-10'>A collection of utility React components & apps.</p>
+        <p className='mt-0 mb-10'>A collection of React components & apps for your interview preparation.</p>
         <p className='mt-0 mb-20'>No frameworks. Pure vanilla React.</p>
       </header>
       <div className='d-flex d-wrap d-y-start col-gap-x'>
@@ -36,6 +37,9 @@ function App() {
         </Card>
         <Card heading='Progress Bar'>
           <ProgressBar width={300} />
+        </Card>
+        <Card heading="Image Carousel">
+          <ImageCarousel />
         </Card>
       </div>
       <p className="c-light d-flex d-x-center d-y-center">

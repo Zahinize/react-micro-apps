@@ -27,7 +27,6 @@ function WatchTimer({ play = false, reset = false, onUpdate }) {
 
     return () => {
       /** Remove side effects when a component is unmounted. **/
-      console.log("WatchTimer: Component unmounted now!");
       intervalId ? clearInterval(intervalId) : null;
       intervalId ? setIntervalId(null) : null;
     };
