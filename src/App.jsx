@@ -1,7 +1,4 @@
-import { useState, useEffect, useDebugValue } from 'react'
-import reactLogo from './assets/react.svg'
 import lovelogo from './assets/love.png';
-import viteLogo from '/vite.svg'
 import './App.css';
 import Todo from './Todo';
 import Counter from './Counter';
