@@ -110,8 +110,8 @@ button.alert:hover {
 .col-gap-x {
   column-gap: 1.5em;
 }
-.row-gap-6x {
-  row-gap: 6em;
+.row-gap-4x {
+  row-gap: 4em;
 }
 /** Margin Utilities **/
 .mb-10 {
@@ -212,22 +212,29 @@ button.alert:hover {
 }
 .carousel-container {
   background: var(--primary-color);
-  height: 300px;
+  height: 500px;
   overflow: hidden;
   padding: var(--padding);
   position: relative;
-  width: 300px;
+  width: 500px;
 }
 /** Carousel **/
 .carousel-container > .carousel {
-  height: 284px;
+  height: 484px;
   position: absolute;
   transform: translateX(0px);
   transition: transform .25s;
-  width: 1500px;
+  width: 2500px;
 }
 .carousel img {
-  height: 284px;
+  height: 100%;
   object-fit: contain;
-  width: 280px;
+  width: 480px;
+}
+
+/* Media Queries for desktop-first design */
+@media (max-width: 1376px) {
+  .component-wrapper {
+    justify-content: center;
+  }
 }

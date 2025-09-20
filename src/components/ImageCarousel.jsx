@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-function ImageCarousel() {
+function ImageCarousel({ width = 500 }) {
   const [translateX, setTranslateX] = useState(0);
   const carouselRef = useRef(null);
   const imgArr = [
@@ -10,7 +10,7 @@ function ImageCarousel() {
     "https://images.unsplash.com/photo-1744749583027-eaef2cf563ba?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1757664171309-f5c082f8d64c?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   ];
-  const translateWidth = 300;
+  const translateWidth = width;
   const maxTranslateWidth = translateWidth * imgArr.length;
 
   useEffect(() => {

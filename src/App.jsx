@@ -11,7 +11,7 @@ import ImageCarousel from './components/ImageCarousel';
 function App() {
 
   return (
-    <div className='container d-flex d-column row-gap-6x'>
+    <div className='root-container d-flex d-column row-gap-4x'>
       <header>
         <h1 className='mb-20 mt-0'>
           React-Interview
@@ -19,7 +19,7 @@ function App() {
         <p className='mt-0 mb-10'>A collection of React components & apps for your interview preparation.</p>
         <p className='mt-0 mb-20'>No frameworks. Pure vanilla React.</p>
       </header>
-      <div className='d-flex d-wrap d-y-start col-gap-x'>
+      <div className='component-wrapper d-flex d-wrap d-y-start col-gap-x'>
         <Card heading='Counter'>
           <Counter />
         </Card>
