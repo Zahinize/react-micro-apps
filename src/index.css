@@ -1,7 +1,8 @@
 :root {
-  --primary-color: #242424;
-  --primary-bg: #bdc3c7;
+  --primary-color: #3c3c43;
+  --primary-bg: #f6f6f7;
   --light-color: #888;
+  --theme-header-color: #262626;
   --theme-color: #4f39f6;
   --theme-hover-color: #432dd7;
   --theme-light-color: #f6f3f4;
@@ -44,14 +45,27 @@ a:hover {
   color: var(--theme-hover-color);
 }
 body {
-  margin: 0;
   display: flex;
+  margin: 0;
   min-width: 320px;
   min-height: 100vh;
 }
 h1 {
-  font-size: 3.2em;
+  font-size: 2.5em;
   line-height: 1.1;
+}
+header {
+  background: var(--theme-header-color);
+  padding: var(--padding);
+}
+header > h1 {
+  background-image: linear-gradient(120deg, #b047ff 16%, #9499ff, #9499ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+p {
+  font-size: 1.3em;
 }
 button {
   border-radius: var(--br-radius);
@@ -120,6 +134,9 @@ button.alert:hover {
 .mb-20 {
   margin-bottom: 20px;
 }
+.mb-50 {
+  margin-bottom: 50px;
+}
 .ml-5 {
   margin-left: 5px;
 }
@@ -166,6 +183,9 @@ button.alert:hover {
 }
 
 /** Component Styles **/
+#root {
+  text-align: center;
+}
 .btn {
   font-size: 0.8em;
   padding: 0.5em;
@@ -178,7 +198,7 @@ button.alert:hover {
 }
 /** Input Group component: Input + Button **/
 .input-group > input {
-    border: 1px solid var(--primary-bg);
+    border: 1px solid var(--light-color);
     border-right: 0;
     padding: 5px;
     height: var(--input-height);
@@ -233,12 +253,6 @@ button.alert:hover {
 }
 
 /* Media Queries for desktop-first design */
-@media (max-width: 1376px) {
-  .component-wrapper {
-    justify-content: center;
-  }
-}
-
 /** Mobile device breakpoint **/
 @media (max-width: 768px) {
   .carousel-container {
