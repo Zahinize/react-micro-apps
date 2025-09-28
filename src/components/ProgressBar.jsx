@@ -31,6 +31,8 @@ function ProgressBar({ width = 300 }) {
       setPlay(false);
       setStatus(STATUS_FINISHED);
     }
+    // Reset play button for better UX
+    setPlay(false);
 
     return () => {
       animEl ? animEl.cancel() : null;
@@ -42,7 +44,11 @@ function ProgressBar({ width = 300 }) {
     if (!animateEl) return;
     if (!play) {
       animateEl.pause();
-      (status !== STATUS_FINISHED) ? setStatus(STATUS_PAUSED) : null;
+      if (!animateEl?.currentTime) {
+        setStatus(STATUS_REST);
+      } else if (status !== STATUS_FINISHED) {
+        setStatus(STATUS_PAUSED);
+      }
       return;
     }
 
@@ -57,7 +63,8 @@ function ProgressBar({ width = 300 }) {
   function renderBar() {
     const style = {
       width: `${width}px`
-    }
+    };
+
     return (
       <div style={style} className="mb-20 progress-container">
         <div id="progress-bar" className="progress-bar"></div>
