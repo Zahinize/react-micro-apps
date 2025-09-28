@@ -12,7 +12,7 @@ function App() {
   return (
     <div className='root-container d-flex d-column'>
       <header className='d-flex d-x-center d-y-center mb-50'>
-        <h1>&lt;react-interview /&gt;</h1>
+        <h1>React Interview</h1>
       </header>
       <p className='mt-0 mb-10'>A collection of React components & apps for your interview preparation.</p>
       <p className='mt-0 mb-50'>No frameworks. Pure vanilla React.</p>
