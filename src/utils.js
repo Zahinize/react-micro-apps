@@ -1,17 +1,14 @@
-const padTime = (time) => {
-    const result = time < 10 ? `0${time}` : String(time);
-    return result;
-};
+const padTime = (time) => time < 10 ? `0${time}` : String(time);
+const formatMilliSec = (ms) => padTime(String(ms).substring(0, 2));
 
 const formatTime = (sec) => {
   sec = Number(sec);
   let mins = Math.floor(sec/60);
   mins = mins ? `${mins}m` : padTime(mins);
   let seconds = padTime(sec%60) + 's';
-  const result = `${mins} : ${seconds}`;
 
-  return result;
-}
+  return `${mins} : ${seconds}`;
+};
 
 const setMinMaxItems = (arr) => {
   if (arr.length < 2) return arr;
@@ -25,6 +22,6 @@ const setMinMaxItems = (arr) => {
   minItem.isMin = true;
   maxItem.isMax = true;
   return arr;
-}
+};
 
-export { formatTime, setMinMaxItems }
+export { formatTime, formatMilliSec, setMinMaxItems }

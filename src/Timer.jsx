@@ -1,41 +1,76 @@
-import { useState, useEffect } from "react";
-import { formatTime } from "./utils";
+import { useState, useEffect, useRef } from "react";
+import { formatTime, formatMilliSec } from "./utils";
 
 function Timer() {
+  const [elapsed, setElapsed] = useState(0); // total ms
   const [play, setPlay] = useState(false);
-  const playText = play ? 'Pause' : 'Play';
-  let [timer, setTimer] = useState(0);
-  let [intervalId, setIntervalId] = useState(null);
+
+  const rafRef = useRef(null);
+  const startRef = useRef(null);
+  const offsetRef = useRef(0); // time carried over when paused
 
   useEffect(() => {
     if (!play) {
-      intervalId ? clearInterval(intervalId) : null;
-      setIntervalId(null);
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+      startRef.current = null;
       return;
     }
 
-    if (!intervalId && play) {
-      let interval = setInterval(() => {
-        timer = timer + 1;
-        setTimer(timer);
-      }, 1000);
+    const tick = (timestamp) => {
+      if (!startRef.current) {
+        startRef.current = timestamp; // first frame baseline
+      }
 
-      setIntervalId(interval);
-    }
-  }, [play, intervalId]);
+      const diff = timestamp - startRef.current + offsetRef.current;
+      setElapsed(diff);
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [play]);
 
   function handleResetBtnClick() {
     setPlay(false);
-    setTimer(0);
+    setElapsed(0);
+    offsetRef.current = 0;
+    startRef.current = null;
   }
+
+  function handleTogglePlay() {
+    if (play) {
+      // Pause
+      setPlay(false);
+      offsetRef.current = elapsed; // keep current time
+    } else {
+      // Resume
+      setPlay(true);
+    }
+  }
+
+  const seconds = Math.floor(elapsed / 1000);
+  const millisec = elapsed % 1000;
 
   return (
     <>
-      <h3 className="mb-20">{formatTime(timer)}</h3>
-      <button className="alert mr-10" onClick={handleResetBtnClick}>Reset</button>
-      <button onClick={() => setPlay(!play)}>{playText}</button>
+      <h3 className="mb-20">
+        <span>{formatTime(seconds)}</span>
+        <span> : </span>
+        <span style={{ width: "52px", display: "inline-block" }}>
+          {formatMilliSec(millisec)}ms
+        </span>
+      </h3>
+      <button className="alert mr-10" onClick={handleResetBtnClick}>
+        Reset
+      </button>
+      <button onClick={handleTogglePlay}>
+        {play ? "Pause" : "Play"}
+      </button>
     </>
-  )
+  );
 }
 
 export default Timer;
