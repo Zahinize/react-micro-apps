@@ -15,7 +15,7 @@ function Stopwatch() {
   /** Note: The sole purpose of this "handleChildUpdate" function is to establish an update connection
    * between parent (Stopwatch) component and child (WatchTimer) component as a callback.
    * The parent component will not re-render when a child component has an active side-effect (such as setInterval)
-   * which will update its state repeatedly. To ensure the parent component gets updated evertime the child gets re-render,
+   * which will update its state repeatedly. To ensure the parent component gets updated everytime the child gets re-render,
    * we must send a state callback from parent to child and invoke it after the corresponding child state is updated.
   **/
   function handleChildUpdate(value) {
@@ -87,7 +87,6 @@ function Stopwatch() {
   function handleLapBtnClick() {
     if (!lapArr.length) return;
 
-    // console.log("Lap btn clicked!");
     var lastLap = lapArr[lapArr.length - 1];
     var now = Date.now();
     var seconds = Number(((now - lastLap.timeStamp)/1000).toFixed(2));

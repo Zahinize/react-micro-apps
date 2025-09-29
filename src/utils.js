@@ -13,14 +13,10 @@ const formatTime = (sec) => {
 const setMinMaxItems = (arr) => {
   if (arr.length < 2) return arr;
 
-  let items = arr.map(({ seconds }) => seconds);
-  let min = Math.min.apply(null, items);
-  let max = Math.max.apply(null, items);
-  let minItem = arr.filter(({ seconds }) => seconds === min)[0];
-  let maxItem = arr.filter(({ seconds }) => seconds === max)[0];
-
-  minItem.isMin = true;
-  maxItem.isMax = true;
+  arr.sort((a, b) => a.seconds - b.seconds);
+  // Set min and max flags to first and last items
+  arr[0].isMin = true;
+  arr[arr.length - 1].isMax = true;
   return arr;
 };
 
