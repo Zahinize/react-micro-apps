@@ -15,16 +15,30 @@ function Todo({ className }) {
     setList(data);
   }, []);
 
+  function handleCheckboxClick(inputId) {
+    let clonedList = structuredClone(list);
+    let item = clonedList.filter(({ id = "" }) => inputId === id)[0];
+
+    item.isComplete = !item.isComplete;
+    setList(clonedList);
+    setLocalStorage(STORAGE_KEY, clonedList);
+  }
+
   function renderList() {
-    const itemList = list.map(({ id = "", val = "" }) => 
-      <div className='mb-10 d-flex d-x-between d-y-center' key={id}>
-        <span className='todo-item-desc'>{val}</span>
-        <div>
-          <button onClick={() => editList(id)} className='btn mr-10'>Edit</button>
-          <button onClick={() => deleteList(id)} className='btn'>Delete</button>
+    const itemList = list.map(({ id = "", val = "", isComplete = false }) => {
+      const itemClassName = isComplete ? 'todo-item-desc t-strike' : 'todo-item-desc';
+
+      return (
+        <div className='mb-10 d-flex d-x-between d-y-center' key={id}>
+          <input type='checkbox' className='input-check' onChange={() => handleCheckboxClick(id)} checked={isComplete} value="" />
+          <span className={itemClassName}>{val}</span>
+          <div>
+            <button onClick={() => editList(id)} className='btn mr-10'>Edit</button>
+            <button onClick={() => deleteList(id)} className='btn'>Delete</button>
+          </div>
         </div>
-      </div>
-    );
+      )
+    });
 
     return itemList;
   }
@@ -56,7 +70,8 @@ function Todo({ className }) {
   function addItemToList() {
     const obj = {
       id: getRandomStr(),
-      val: inputVal
+      val: inputVal,
+      isComplete: false
     };
 
     list.push(obj);
