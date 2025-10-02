@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './todo.css';
 
 function Todo({ className }) {
   const [inputVal, setInputVal] = useState('');
@@ -9,7 +10,7 @@ function Todo({ className }) {
   function renderList() {
     const itemList = list.map(({ id = "", val = "" }) => 
       <div className='mb-10 d-flex d-x-between d-y-center' key={id}>
-        <span>{val}</span>
+        <span className='todo-item-desc'>{val}</span>
         <div>
           <button onClick={() => editList(id)} className='btn mr-10'>Edit</button>
           <button onClick={() => deleteList(id)} className='btn'>Delete</button>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { formatTime, formatMilliSec } from "./utils";
+import { formatTime, formatMilliSec } from "../utils";
 
 function Timer() {
   const [elapsed, setElapsed] = useState(0); // total ms
