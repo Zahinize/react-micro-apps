@@ -11,7 +11,7 @@ function Todo({ className }) {
 
   // This hook will run only once after render
   useEffect(() => {
-    let data = getLocalStorage(STORAGE_KEY);
+    let data = getLocalStorage(STORAGE_KEY) || [];
     setList(data);
   }, []);
 
