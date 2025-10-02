@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './todo.css';
+import { getRandomStr, getLocalStorage, setLocalStorage } from '../../utils';
 
 function Todo({ className }) {
   const [inputVal, setInputVal] = useState('');
   const [itemId, setItemId] = useState('');
   const [list, setList] = useState([]);
   const btnText = itemId ? 'Update' : 'Save';
+  const STORAGE_KEY = 'todolist';
+
+  // This hook will run only once after render
+  useEffect(() => {
+    let data = getLocalStorage(STORAGE_KEY);
+    setList(data);
+  }, []);
 
   function renderList() {
     const itemList = list.map(({ id = "", val = "" }) => 
@@ -40,13 +48,14 @@ function Todo({ className }) {
     let currentList = structuredClone(list);
     currentList = currentList.filter((item) => item.id !== id);
     setList(currentList);
+    setLocalStorage(STORAGE_KEY, currentList);
     setInputVal('');
     setItemId('');
   }
 
   function addItemToList() {
     const obj = {
-      id: Math.random().toString(16).substring(3),
+      id: getRandomStr(),
       val: inputVal
     };
 
@@ -76,6 +85,7 @@ function Todo({ className }) {
       addItemToList();
     }
 
+    setLocalStorage(STORAGE_KEY, list);
     setInputVal('');
     console.log("list: ", list);
   }

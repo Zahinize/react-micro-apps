@@ -20,4 +20,8 @@ const setMinMaxItems = (arr) => {
   return arr;
 };
 
-export { formatTime, formatMilliSec, setMinMaxItems }
+const getRandomStr = () => Math.random().toString(16).substring(3);
+const setLocalStorage = (name, val) => localStorage.setItem(name, JSON.stringify(val));
+const getLocalStorage = (name) => JSON.parse(localStorage.getItem(name));
+
+export { formatTime, formatMilliSec, setMinMaxItems, getRandomStr, setLocalStorage, getLocalStorage };
