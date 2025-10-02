@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './todo.css';
 import { getRandomStr, getLocalStorage, setLocalStorage } from '../../utils';
 
 function Todo({ className }) {
+  let activeItemIdRef = useRef('');
   const [inputVal, setInputVal] = useState('');
-  const [itemId, setItemId] = useState('');
   const [list, setList] = useState([]);
-  const btnText = itemId ? 'Update' : 'Save';
+  const btnText = activeItemIdRef.current ? 'Update' : 'Save';
   const STORAGE_KEY = 'todolist';
 
   // This hook will run only once after render
@@ -48,7 +48,8 @@ function Todo({ className }) {
 
     const itemVal = list.filter((item) => item.id === id)[0].val;
     setInputVal(itemVal);
-    setItemId(id);
+    activeItemIdRef.current = id;
+    // setItemId(id);
   }
 
   function deleteList(id) {
@@ -64,7 +65,8 @@ function Todo({ className }) {
     setList(currentList);
     setLocalStorage(STORAGE_KEY, currentList);
     setInputVal('');
-    setItemId('');
+    activeItemIdRef.current = '';
+    // setItemId('');
   }
 
   function addItemToList() {
@@ -79,7 +81,7 @@ function Todo({ className }) {
   }
 
   function updateList() {
-    const item = list.filter((item) => item.id === itemId)[0];
+    const item = list.filter((item) => item.id === activeItemIdRef.current)[0];
 
     item.val = inputVal;
   }
@@ -93,9 +95,10 @@ function Todo({ className }) {
     if (!inputVal) return;
     console.log(inputVal);
 
-    if (itemId) {
+    if (activeItemIdRef.current) {
       updateList();
-      setItemId('');
+      // setItemId('');
+      activeItemIdRef.current = '';
     } else {
       addItemToList();
     }
