@@ -21,7 +21,23 @@ const setMinMaxItems = (arr) => {
 };
 
 const getRandomStr = () => Math.random().toString(16).substring(3);
-const setLocalStorage = (name, val) => localStorage.setItem(name, JSON.stringify(val));
-const getLocalStorage = (name) => JSON.parse(localStorage.getItem(name));
+
+const getLocalStorage = (key) => {
+  try {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+  } catch (e) {
+    console.error("Error parsing localStorage data", e);
+    return null;
+  }
+}
+
+const setLocalStorage = (key, value) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    console.error("Error setting localStorage data", e);
+  }
+}
 
 export { formatTime, formatMilliSec, setMinMaxItems, getRandomStr, setLocalStorage, getLocalStorage };
