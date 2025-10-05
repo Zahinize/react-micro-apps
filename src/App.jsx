@@ -12,10 +12,10 @@ function App() {
   return (
     <div className='root-container d-flex d-column'>
       <header className='d-flex d-x-center d-y-center mb-50'>
-        <h1>React Interview</h1>
+        <h1 className='fs-large'>React Interview</h1>
       </header>
-      <p className='mt-0 mb-10'>A collection of React components & apps for your interview preparation.</p>
-      <p className='mt-0 mb-50'>No frameworks. Pure vanilla React.</p>
+      <p className='fs-medium mt-0 mb-10'>A collection of React components & apps for your interview preparation.</p>
+      <p className='fs-medium mt-0 mb-50'>No frameworks. Pure vanilla React.</p>
       <div className='component-wrapper d-flex d-wrap d-x-center d-y-start mb-50 col-gap-x'>
         <Card heading='Counter'>
           <Counter />

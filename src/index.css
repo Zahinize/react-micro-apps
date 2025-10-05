@@ -15,6 +15,11 @@
   --br-radius: 8px;
   --padding: 8px;
 
+  --fs-small: 0.8em;
+  --fs-normal: 1em;
+  --fs-medium: 1.3em;
+  --fs-large: 2.5em;
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -50,7 +55,6 @@ body {
   min-height: 100vh;
 }
 h1 {
-  font-size: 2.5em;
   line-height: 1.1;
 }
 header {
@@ -63,9 +67,6 @@ header > h1 {
   background-clip: text;
   color: transparent;
 }
-p {
-  font-size: 1.3em;
-}
 button {
   border-radius: var(--br-radius);
   border: 1px solid transparent;
@@ -73,7 +74,6 @@ button {
   color: #f9f9f9;
   cursor: pointer;
   padding: 0.5em 1em;
-  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   transition: all 0.25s;
@@ -220,13 +220,25 @@ input[type="checkbox"]:checked::before {
 .t-strike {
   text-decoration: line-through;
 }
+/** Font size Utilities **/
+.fs-normal {
+  font-size: var(--fs-normal);
+}
+.fs-small {
+  font-size: var(--fs-small);
+}
+.fs-medium {
+  font-size: var(--fs-medium);
+}
+.fs-large {
+  font-size: var(--fs-large);
+}
 
 /** Component Styles **/
 #root {
   text-align: center;
 }
 .btn {
-  font-size: 0.8em;
   padding: 0.5em;
 }
 .card {
