@@ -9,28 +9,28 @@ function Todo({ className }) {
   const btnText = activeItemIdRef.current ? 'Update' : 'Save';
   const STORAGE_KEY = 'todolist';
 
-  // This hook will run only once after render
+  // This hook will set data in local storage when app has valid data
+  useEffect(() => {
+    if (!list.length) return;
+
+    console.log("set data to local storage", list);
+    setLocalStorage(STORAGE_KEY, list);
+  }, [list]);
+
+  // This hook runs only once after initial render (componentDidMount equivalent)
   useEffect(() => {
     let data = getLocalStorage(STORAGE_KEY) || [];
+    console.log("useEffect run to set app data: ", data);
     setList(data);
   }, []);
 
-  function handleCheckboxClick(inputId) {
-    let clonedList = structuredClone(list);
-    let item = clonedList.filter(({ id = "" }) => inputId === id)[0];
-
-    item.isComplete = !item.isComplete;
-    setList(clonedList);
-    setLocalStorage(STORAGE_KEY, clonedList);
-  }
-
   function renderList() {
     const itemList = list.map(({ id = "", val = "", isComplete = false }) => {
-      const itemClassName = isComplete ? 'todo-item-desc t-strike' : 'todo-item-desc';
+      const itemClassName = isComplete ? 'todo-item-desc t-strike mr-10' : 'todo-item-desc mr-10';
 
       return (
         <div className='mb-10 d-flex d-x-between d-y-center' key={id}>
-          <input type='checkbox' className='input-check' onChange={() => handleCheckboxClick(id)} checked={isComplete} value="" />
+          <input type='checkbox' className='input-check mr-10' onChange={() => handleCheckboxClick(id)} checked={isComplete} value="" />
           <span className={itemClassName}>{val}</span>
           <div>
             <button onClick={() => editList(id)} className='btn mr-10'>Edit</button>
@@ -43,15 +43,14 @@ function Todo({ className }) {
     return itemList;
   }
 
+  /***** Business logic functions *****/
   function editList(id) {
     if (!id) return;
 
     const itemVal = list.filter((item) => item.id === id)[0].val;
     setInputVal(itemVal);
     activeItemIdRef.current = id;
-    // setItemId(id);
   }
-
   function deleteList(id) {
     if (!id) return;
 
@@ -60,52 +59,54 @@ function Todo({ className }) {
 
     if (!window.confirm(confirmText)) return;
 
-    let currentList = structuredClone(list);
-    currentList = currentList.filter((item) => item.id !== id);
+    let currentList = [...list].filter((item) => item.id !== id);
     setList(currentList);
-    setLocalStorage(STORAGE_KEY, currentList);
     setInputVal('');
     activeItemIdRef.current = '';
-    // setItemId('');
   }
-
   function addItemToList() {
-    const obj = {
+    const arr = [...list];
+
+    arr.push({
       id: getRandomStr(),
       val: inputVal,
       isComplete: false
-    };
-
-    list.push(obj);
-    setList(list);
+    });
+    setList(arr);
   }
-
   function updateList() {
-    const item = list.filter((item) => item.id === activeItemIdRef.current)[0];
+    const arr = [...list];
+    const item = arr.filter((item) => item.id === activeItemIdRef.current)[0];
 
     item.val = inputVal;
+    setList(arr);
   }
 
+  /***** Handle UI events *****/
   function handleInputKeyPress(e) {
     if (e.key !== 'Enter') return;
+
     handleBtnClick();
   }
-
   function handleBtnClick() {
     if (!inputVal) return;
-    console.log(inputVal);
 
     if (activeItemIdRef.current) {
       updateList();
-      // setItemId('');
       activeItemIdRef.current = '';
     } else {
       addItemToList();
     }
 
-    setLocalStorage(STORAGE_KEY, list);
     setInputVal('');
-    console.log("list: ", list);
+  }
+  function handleCheckboxClick(inputId) {
+    let clonedList = [...list];
+    let item = clonedList.filter(({ id = "" }) => inputId === id)[0];
+
+    item.isComplete = !item.isComplete;
+    setList(clonedList);
+    // setLocalStorage(STORAGE_KEY, clonedList);
   }
 
   return (
