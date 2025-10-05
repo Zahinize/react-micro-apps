@@ -105,7 +105,7 @@ function ProgressBar({ width = 300 }) {
       {renderBar()}
       {renderStatus()}
       {renderSettings()}
-      <button onClick={handlePlayBtnClick}>{playText}</button>
+      <button className="fs-normal" onClick={handlePlayBtnClick}>{playText}</button>
     </>
   )
 }

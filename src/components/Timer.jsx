@@ -63,10 +63,10 @@ function Timer() {
           {formatMilliSec(millisec)}ms
         </span>
       </h3>
-      <button className="alert mr-10" onClick={handleResetBtnClick}>
+      <button className="alert fs-normal mr-10" onClick={handleResetBtnClick}>
         Reset
       </button>
-      <button onClick={handleTogglePlay}>
+      <button className="fs-normal" onClick={handleTogglePlay}>
         {play ? "Pause" : "Play"}
       </button>
     </>

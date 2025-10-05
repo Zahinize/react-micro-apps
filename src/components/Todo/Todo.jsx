@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './todo.css';
 import { getRandomStr, getLocalStorage, setLocalStorage } from '../../utils';
 
-function Todo({ className }) {
+export default function Todo({ className }) {
   let activeItemIdRef = useRef('');
   const [inputVal, setInputVal] = useState('');
   const [list, setList] = useState([]);
@@ -24,6 +24,8 @@ function Todo({ className }) {
   }, []);
 
   function renderList() {
+    if (!list.length) return <p className='fs-normal c-light mb-10'>No items selected.</p>;
+
     const itemList = list.map(({ id = "", val = "", isComplete = false }) => {
       const itemClassName = isComplete ? 'todo-item-desc t-strike mr-10' : 'todo-item-desc mr-10';
 
@@ -32,8 +34,8 @@ function Todo({ className }) {
           <input type='checkbox' className='input-check mr-10' onChange={() => handleCheckboxClick(id)} checked={isComplete} value="" />
           <span className={itemClassName}>{val}</span>
           <div>
-            <button onClick={() => editList(id)} className='btn mr-10'>Edit</button>
-            <button onClick={() => deleteList(id)} className='btn'>Delete</button>
+            <button onClick={() => editList(id)} className='btn fs-normal mr-10'>Edit</button>
+            <button onClick={() => deleteList(id)} className='btn fs-normal'>Delete</button>
           </div>
         </div>
       )
@@ -119,7 +121,7 @@ function Todo({ className }) {
           type="text"
           value={inputVal}
         />
-        <button onClick={handleBtnClick}>{btnText}</button>
+        <button className='fs-normal' onClick={handleBtnClick}>{btnText}</button>
       </div>
       <div>
         {renderList()}
@@ -127,5 +129,3 @@ function Todo({ className }) {
     </div>
   )
 }
-
-export default Todo;

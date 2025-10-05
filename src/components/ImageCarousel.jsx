@@ -68,8 +68,8 @@ function ImageCarousel() {
 
     return (
       <>
-        <button disabled={isDisablePrevBtn} id="nav-prev" className="mr-10" onClick={handleNavigationBtnClick}>Previous</button>
-        <button id="nav-next" onClick={handleNavigationBtnClick}>Next</button>
+        <button disabled={isDisablePrevBtn} id="nav-prev" className="fs-normal mr-10" onClick={handleNavigationBtnClick}>Previous</button>
+        <button id="nav-next" className="fs-normal" onClick={handleNavigationBtnClick}>Next</button>
       </>
     )
   }
