@@ -4,24 +4,13 @@ import { getRandomStr, getLocalStorage, setLocalStorage } from '../../utils';
 
 export default function Todo({ className }) {
   let activeItemIdRef = useRef('');
-  const [inputVal, setInputVal] = useState('');
-  const [list, setList] = useState([]);
-  const btnText = activeItemIdRef.current ? 'Update' : 'Save';
   const STORAGE_KEY = 'todolist';
+  const [inputVal, setInputVal] = useState('');
+  const [list, setList] = useState(() => getLocalStorage(STORAGE_KEY) || []);
+  const btnText = activeItemIdRef.current ? 'Update' : 'Save';
 
-  // This hook will set data in local storage when app has valid data
-  useEffect(() => {
-    if (!list.length) return;
-
-    setLocalStorage(STORAGE_KEY, list);
-  }, [list]);
-
-  // This hook runs only once after initial render (componentDidMount equivalent)
-  useEffect(() => {
-    let data = getLocalStorage(STORAGE_KEY) || [];
-
-    setList(data);
-  }, []);
+  // This hook will set local storage data whenever list state is updated
+  useEffect(() => setLocalStorage(STORAGE_KEY, list), [list]);
 
   function renderList() {
     if (!list.length) return <p className='fs-normal c-light mb-10'>No items selected.</p>;
@@ -76,10 +65,10 @@ export default function Todo({ className }) {
     setList(arr);
   }
   function updateList() {
-    const arr = [...list];
-    const item = arr.filter((item) => item.id === activeItemIdRef.current)[0];
+    const arr = [...list].map((item) => {
+      return item.id === activeItemIdRef.current ? { ...item, val: inputVal } : item;
+    });
 
-    item.val = inputVal;
     setList(arr);
   }
 
@@ -102,12 +91,11 @@ export default function Todo({ className }) {
     setInputVal('');
   }
   function handleCheckboxClick(inputId) {
-    let clonedList = [...list];
-    let item = clonedList.filter(({ id = "" }) => inputId === id)[0];
+    let arr = [...list].map((item) => {
+      return inputId === item.id ? { ...item, isComplete: !item.isComplete } : item;
+    });
 
-    item.isComplete = !item.isComplete;
-    setList(clonedList);
-    // setLocalStorage(STORAGE_KEY, clonedList);
+    setList(arr);
   }
 
   return (
