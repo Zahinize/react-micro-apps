@@ -13,14 +13,13 @@ function Todo({ className }) {
   useEffect(() => {
     if (!list.length) return;
 
-    console.log("set data to local storage", list);
     setLocalStorage(STORAGE_KEY, list);
   }, [list]);
 
   // This hook runs only once after initial render (componentDidMount equivalent)
   useEffect(() => {
     let data = getLocalStorage(STORAGE_KEY) || [];
-    console.log("useEffect run to set app data: ", data);
+
     setList(data);
   }, []);
 
