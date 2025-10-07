@@ -6,16 +6,17 @@ import Timer from './components/Timer';
 import Stopwatch from './components/StopWatch/Stopwatch';
 import ProgressBar from './components/ProgressBar';
 import ImageCarousel from './components/ImageCarousel';
+import Tooltip from './components/Tooltip/Tooltip';
 
-function App() {
+export default function App() {
 
   return (
     <div className='root-container d-flex d-column'>
       <header className='d-flex d-x-center d-y-center mb-50'>
         <h1 className='fs-large'>React Interview</h1>
       </header>
-      <p className='fs-medium mt-0 mb-10'>A collection of React components & apps for your interview preparation.</p>
-      <p className='fs-medium mt-0 mb-50'>No frameworks. Pure vanilla React.</p>
+      <p className='d-flex d-x-center d-y-center fs-medium mb-10'>A collection of React components & apps for your interview preparation.</p>
+      <p className='d-flex d-x-center d-y-center fs-medium mb-50'>No frameworks. Pure vanilla React.</p>
       <div className='component-wrapper d-flex d-wrap d-x-center d-y-start mb-50 col-gap-x'>
         <Card heading='Counter'>
           <Counter />
@@ -35,6 +36,25 @@ function App() {
         <Card heading="Image Carousel">
           <ImageCarousel />
         </Card>
+        <Card heading='Tooltip'>
+          <Tooltip text="I am a tooltip :)">
+            <p className='highlight mb-10'>Hover me to see a tooltip!</p>
+          </Tooltip>
+          <p className='mb-10'>
+            Lorem ipsum dolor sit amet, <Tooltip text="I am a tooltip :)"><span className='highlight'>consectetur</span></Tooltip> adipiscing elit.<br/>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.<br/>
+          </p>
+          <Tooltip placement="top" text="Tooltip can appear on top and bottom.">
+            <button className='mb-10'>Hover me to see a tooltip!</button>
+          </Tooltip>
+          <p className='mb-10'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.<br/>
+          </p>
+          <Tooltip text="I am a biggggggggger biggggger tooltip :)">
+            <p className='highlight mb-10'>Hover me!</p>
+          </Tooltip>
+        </Card>
       </div>
       <span className="c-light d-flex d-x-center d-y-center mb-20">
         A project built with 
@@ -44,5 +64,3 @@ function App() {
     </div>
   )
 }
-
-export default App

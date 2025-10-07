@@ -10,15 +10,23 @@
   --alert-color: #c0392b;
   --success-color: #27ae60;
 
+  /** Logo color **/
+  --logo-color-purple: #b047ff;
+  --logo-color-blue: #9499ff;
+
   --input-height: 40px;
   --input-width: 250px;
   --br-radius: 8px;
   --padding: 8px;
 
+  /** Font size **/
   --fs-small: 0.8em;
   --fs-normal: 1em;
-  --fs-medium: 1.3em;
+  --fs-medium: 1.3em; 
   --fs-large: 2.5em;
+
+  /** Device breakpoints **/
+  --desktop-width: 1536px;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -62,7 +70,7 @@ header {
   padding: var(--padding);
 }
 header > h1 {
-  background-image: linear-gradient(120deg, #b047ff 16%, #9499ff, #9499ff);
+  background-image: linear-gradient(120deg, var(--logo-color-purple) 16%, var(--logo-color-blue), var(--logo-color-blue));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -236,10 +244,15 @@ input[type="checkbox"]:checked::before {
 
 /** Component Styles **/
 #root {
-  text-align: center;
+  min-height: inherit;
+}
+.component-wrapper {
+  max-width: var(--desktop-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 .btn {
-  padding: 0.5em;
+  padding: var(--padding);
 }
 .card {
   border: 1px solid var(--primary-color);
@@ -247,6 +260,11 @@ input[type="checkbox"]:checked::before {
   background: #fff;
   padding: 1em;
 }
+.highlight {
+  color: var(--theme-color);
+  text-decoration: 3px underline var(--logo-color-purple);
+}
+
 /** Input Group component: Input + Button **/
 .input-group > input {
     border: 1px solid var(--light-color);

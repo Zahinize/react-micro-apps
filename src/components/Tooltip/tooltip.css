@@ -1,0 +1,40 @@
+.tip {
+  display: inline-flex;
+  position: relative;
+}
+.tip::before {
+  background: var(--theme-header-color);
+  border-radius: var(--br-radius);
+  color: #fff;
+  content: attr(data-text);
+  opacity: 0;
+  position: absolute;
+  padding: var(--padding);
+  transform: translateY(0);
+  transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+  text-wrap-mode: nowrap;
+  will-change: transform, opacity;
+}
+.tip::after {
+  border-top: calc(var(--br-radius) * 2) solid var(--theme-header-color);
+  border-left: var(--br-radius) solid transparent;
+  border-right: var(--br-radius) solid transparent;
+  content: "";
+  height: 0;
+  left: 5px;
+  opacity: 0;
+  position: absolute;
+  transform: translateY(0px);
+  transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+  top: 35px;
+  width: 0;
+  will-change: transform, opacity;
+}
+.tip:hover::before {
+  opacity: 1;
+  transform: translateY(-50px);
+}
+.tip:hover::after {
+  opacity: 1;
+  transform: translateY(-50px);
+}

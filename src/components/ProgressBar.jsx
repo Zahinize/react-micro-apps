@@ -74,7 +74,7 @@ function ProgressBar({ width = 300 }) {
 
   function renderStatus() {
     return (
-      <p className="mt-0 mb-20">
+      <p className="mb-20 d-flex d-y-center">
         <strong>Status: </strong>
         <span>{status}</span>
       </p>
@@ -83,7 +83,7 @@ function ProgressBar({ width = 300 }) {
 
   function renderSettings() {
     return (
-      <div className="mb-20 d-flex d-x-center d-y-center">
+      <div className="mb-20 d-flex d-y-center">
         <strong className="mr-5">Duration: </strong>
         <select
           id="duration"
