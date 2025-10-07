@@ -15,7 +15,7 @@ export default function App() {
       <header className='d-flex d-x-center d-y-center mb-50'>
         <h1 className='fs-large sm'>React Interview</h1>
       </header>
-      <p className='t-center fs-medium sm pl-10 mb-10'>A collection of React components for your <Tooltip text="Good Luck!"><span className='highlight'>interview</span></Tooltip> preparation.</p>
+      <p className='t-center fs-medium sm pl-10 mb-10'>A collection of React components for <br className='d-none sm:d-inline'/>your <Tooltip text="Good Luck!"><span className='highlight'>interview</span></Tooltip> preparation.</p>
       <p className='t-center fs-medium sm pl-10 mb-50'>No frameworks. Pure vanilla React.</p>
       <div className='component-wrapper d-flex d-wrap d-x-center d-y-start mb-50 col-gap-x'>
         <Card heading='Counter'>

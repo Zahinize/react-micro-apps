@@ -236,6 +236,9 @@ input[type="checkbox"]:checked::before {
 .bg-primary {
   background: var(--primary-bg);
 }
+.d-none {
+  display: none;
+}
 /** Text Utilities **/
 .t-strike {
   text-decoration: line-through;
@@ -349,6 +352,9 @@ input[type="checkbox"]:checked::before {
   }
   .carousel img {
     width: 280px;
+  }
+  .sm\:d-inline {
+    display: inline;
   }
 }
 /* Extra-Small (xs) screen breakpoint */
