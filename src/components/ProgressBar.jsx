@@ -75,7 +75,7 @@ function ProgressBar({ width = 300 }) {
   function renderStatus() {
     return (
       <p className="mb-20 d-flex d-y-center">
-        <strong>Status: </strong>
+        <strong className="mr-5">Status: </strong>
         <span>{status}</span>
       </p>
     )

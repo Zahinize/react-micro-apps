@@ -208,8 +208,20 @@ input[type="checkbox"]:checked::before {
 .p-5 {
   padding: 5px;
 }
+.pl-5 {
+  padding-left: 5px;
+}
+.pr-5 {
+  padding-right: 5px;
+}
 .p-10 {
   padding: 10px;
+}
+.pl-10 {
+  padding-left: 10px;
+}
+.pr-10 {
+  padding-right: 10px;
 }
 /** Color Utilities **/
 .c-light {
@@ -227,6 +239,9 @@ input[type="checkbox"]:checked::before {
 /** Text Utilities **/
 .t-strike {
   text-decoration: line-through;
+}
+.t-center {
+  text-align: center;
 }
 /** Font size Utilities **/
 .fs-normal {
