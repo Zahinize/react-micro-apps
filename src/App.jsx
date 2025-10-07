@@ -41,17 +41,17 @@ export default function App() {
             <p className='highlight mb-10'>Hover me to see a tooltip!</p>
           </Tooltip>
           <p className='mb-10'>
-            Lorem ipsum dolor sit amet, <Tooltip text="I am a tooltip :)"><span className='highlight'>consectetur</span></Tooltip> adipiscing elit.<br/>
-            Ut enim ad minim veniam, quis nostrud nisi.<br/>
+            Lorem ipsum amet, <Tooltip text="I am a tooltip :)"><span className='highlight'>consectetur.</span></Tooltip><br/>
+            Ut enim veniam, quis nostrud nisi.<br/>
           </p>
           <Tooltip placement="top" text="Tooltip can appear on top and bottom.">
             <button className='fs-normal sm mb-10'>Hover me to see a tooltip!</button>
           </Tooltip>
           <p className='mb-10'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
-            Ut enim ad minim veniam, quis nostrud nisi.<br/>
+            Lorem ipsum amet, consectetur.<br/>
+            Ut enim veniam, quis nostrud nisi.<br/>
           </p>
-          <Tooltip text="I am a biggggggggger biggggger tooltip :)">
+          <Tooltip text="Hello, how are you?">
             <p className='highlight mb-10'>Hover me!</p>
           </Tooltip>
         </Card>
