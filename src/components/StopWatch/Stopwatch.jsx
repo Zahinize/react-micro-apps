@@ -109,9 +109,9 @@ function Stopwatch() {
       />
       {/* <h3 className="mt-0 mb-20">Parent component: {count}</h3> */}
       {renderLapComponent()}
-      <button className="alert fs-normal mr-10" onClick={handleResetBtnClick}>Reset</button>
-      <button className="outline fs-normal mr-10" onClick={handleLapBtnClick}>Lap</button>
-      <button className="fs-normal" onClick={handlePlayBtnClick}>{playText}</button>
+      <button className="alert fs-normal sm mr-10" onClick={handleResetBtnClick}>Reset</button>
+      <button className="outline fs-normal sm mr-10" onClick={handleLapBtnClick}>Lap</button>
+      <button className="fs-normal sm" onClick={handlePlayBtnClick}>{playText}</button>
     </>
   )
 }

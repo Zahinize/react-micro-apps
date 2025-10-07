@@ -351,3 +351,15 @@ input[type="checkbox"]:checked::before {
     width: 280px;
   }
 }
+/* Extra-Small (xs) screen breakpoint */
+@media (max-width: 576px) {
+  .sm.fs-large {
+    font-size: calc(var(--fs-large) - 0.5em); /** Font-size: 2em; **/
+  }
+  .sm.fs-medium {
+    font-size: calc(var(--fs-medium) - 0.2em); /** Font-size: 1.1em; **/
+  }
+  .sm.fs-normal {
+    font-size: var(--fs-small);
+  }
+}

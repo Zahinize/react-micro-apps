@@ -68,8 +68,8 @@ function ImageCarousel() {
 
     return (
       <div className="d-flex d-x-center d-y-center">
-        <button disabled={isDisablePrevBtn} id="nav-prev" className="fs-normal mr-10" onClick={handleNavigationBtnClick}>Previous</button>
-        <button id="nav-next" className="fs-normal" onClick={handleNavigationBtnClick}>Next</button>
+        <button disabled={isDisablePrevBtn} id="nav-prev" className="fs-normal sm mr-10" onClick={handleNavigationBtnClick}>Previous</button>
+        <button id="nav-next" className="fs-normal sm" onClick={handleNavigationBtnClick}>Next</button>
       </div>
     )
   }

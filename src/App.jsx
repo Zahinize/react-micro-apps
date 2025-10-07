@@ -13,10 +13,10 @@ export default function App() {
   return (
     <div className='root-container d-flex d-column'>
       <header className='d-flex d-x-center d-y-center mb-50'>
-        <h1 className='fs-large'>React Interview</h1>
+        <h1 className='fs-large sm'>React Interview</h1>
       </header>
-      <p className='t-center fs-medium pl-10 mb-10'>A collection of React components for your interview preparation.</p>
-      <p className='t-center fs-medium pl-10 mb-50'>No frameworks. Pure vanilla React.</p>
+      <p className='t-center fs-medium sm pl-10 mb-10'>A collection of React components for your <Tooltip text="Good Luck!"><span className='highlight'>interview</span></Tooltip> preparation.</p>
+      <p className='t-center fs-medium sm pl-10 mb-50'>No frameworks. Pure vanilla React.</p>
       <div className='component-wrapper d-flex d-wrap d-x-center d-y-start mb-50 col-gap-x'>
         <Card heading='Counter'>
           <Counter />
@@ -45,7 +45,7 @@ export default function App() {
             Ut enim ad minim veniam, quis nostrud nisi.<br/>
           </p>
           <Tooltip placement="top" text="Tooltip can appear on top and bottom.">
-            <button className='mb-10'>Hover me to see a tooltip!</button>
+            <button className='fs-normal sm mb-10'>Hover me to see a tooltip!</button>
           </Tooltip>
           <p className='mb-10'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
@@ -56,7 +56,7 @@ export default function App() {
           </Tooltip>
         </Card>
       </div>
-      <span className="c-light d-flex d-x-center d-y-center mb-20">
+      <span className="c-light d-flex d-x-center d-y-center mb-50">
         A project built with 
         <img className='ml-5 mr-5' width="16" height="16" src={lovelogo} alt="filled-like"/>
         by <a className='ml-5' target='_blank' href="https://www.linkedin.com/in/zahinalwa/">Zahin.</a>

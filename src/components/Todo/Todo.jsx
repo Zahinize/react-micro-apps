@@ -23,8 +23,8 @@ export default function Todo({ className }) {
           <input type='checkbox' className='input-check mr-10' onChange={() => handleCheckboxClick(id)} checked={isComplete} value="" />
           <span className={itemClassName}>{val}</span>
           <div>
-            <button onClick={() => editList(id)} className='btn fs-normal mr-10'>Edit</button>
-            <button onClick={() => deleteList(id)} className='btn fs-normal'>Delete</button>
+            <button onClick={() => editList(id)} className='btn fs-normal sm mr-10'>Edit</button>
+            <button onClick={() => deleteList(id)} className='btn fs-normal sm'>Delete</button>
           </div>
         </div>
       )
@@ -109,7 +109,7 @@ export default function Todo({ className }) {
           type="text"
           value={inputVal}
         />
-        <button className='fs-normal' onClick={handleBtnClick}>{btnText}</button>
+        <button className='fs-normal sm' onClick={handleBtnClick}>{btnText}</button>
       </div>
       <div>
         {renderList()}

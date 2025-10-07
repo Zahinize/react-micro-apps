@@ -3,3 +3,10 @@
   font-weight: bold;
   width: 200px;
 }
+
+/* Extra-Small (xs) screen breakpoint */
+@media (max-width: 576px) {
+  .todo-item-desc {
+    width: 160px;
+  }
+}
