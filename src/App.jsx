@@ -15,7 +15,8 @@ export default function App() {
       <header className='d-flex d-x-center d-y-center mb-50'>
         <h1 className='fs-large sm'>React Interview</h1>
       </header>
-      <p className='t-center fs-medium sm pl-10 mb-10'>A collection of React components for <br className='d-none sm:d-inline'/>your <Tooltip text="Good Luck!"><span className='highlight'>interview</span></Tooltip> preparation.</p>
+      <p className='t-center fs-medium sm pl-10 mb-10'>A collection of React components for 
+        <br className='d-none sm:d-inline'/> your <Tooltip text="Good Luck!"><span className='highlight'>interview</span></Tooltip> preparation.</p>
       <p className='t-center fs-medium sm pl-10 mb-50'>No frameworks. Pure vanilla React.</p>
       <div className='component-wrapper d-flex d-wrap d-x-center d-y-start mb-50 col-gap-x'>
         <Card heading='Counter'>
@@ -44,15 +45,15 @@ export default function App() {
             Lorem ipsum amet, <Tooltip text="I am a tooltip :)"><span className='highlight'>consectetur.</span></Tooltip><br/>
             Ut enim veniam, quis nostrud nisi.<br/>
           </p>
-          <Tooltip placement="top" text="Tooltip can appear on top and bottom.">
-            <button className='fs-normal sm mb-10'>Hover me to see a tooltip!</button>
+          <Tooltip placement="bottom" text="I am here.">
+            <button className='fs-normal sm mb-10'>See tooltip at bottom!</button>
           </Tooltip>
           <p className='mb-10'>
             Lorem ipsum amet, consectetur.<br/>
             Ut enim veniam, quis nostrud nisi.<br/>
           </p>
-          <Tooltip text="Hello, how are you?">
-            <p className='highlight mb-10'>Hover me!</p>
+          <Tooltip placement='bottom' text="Hello, how are you?">
+            <p className='highlight mb-10'>Ho!</p>
           </Tooltip>
         </Card>
       </div>

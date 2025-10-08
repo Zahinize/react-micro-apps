@@ -39,3 +39,16 @@
   opacity: 1;
   transform: translateY(-50px);
 }
+/** Placement: bottom **/
+.tip[data-placement=bottom]:hover::before {
+  transform: translateY(50px);
+}
+.tip[data-placement=bottom]::after {
+  /* background: red; */
+  border-top: 0;
+  border-bottom: calc(var(--br-radius) * 2) solid var(--theme-header-color);
+  top: -12px;
+}
+.tip[data-placement=bottom]:hover::after {
+  transform: translateY(50px);
+}

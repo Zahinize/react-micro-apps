@@ -41,6 +41,7 @@ export default function Todo({ className }) {
     setInputVal(itemVal);
     activeItemIdRef.current = id;
   }
+
   function deleteList(id) {
     if (!id) return;
 
@@ -54,6 +55,7 @@ export default function Todo({ className }) {
     setInputVal('');
     activeItemIdRef.current = '';
   }
+
   function addItemToList() {
     const arr = [...list];
 
@@ -64,6 +66,7 @@ export default function Todo({ className }) {
     });
     setList(arr);
   }
+
   function updateList() {
     const arr = [...list].map((item) => {
       return item.id === activeItemIdRef.current ? { ...item, val: inputVal } : item;
@@ -78,6 +81,7 @@ export default function Todo({ className }) {
 
     handleBtnClick();
   }
+
   function handleBtnClick() {
     if (!inputVal) return;
 
@@ -90,6 +94,7 @@ export default function Todo({ className }) {
 
     setInputVal('');
   }
+
   function handleCheckboxClick(inputId) {
     let arr = [...list].map((item) => {
       return inputId === item.id ? { ...item, isComplete: !item.isComplete } : item;
