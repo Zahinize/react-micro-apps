@@ -53,7 +53,7 @@ export default function App() {
             Ut enim veniam, quis nostrud nisi.<br/>
           </p>
           <Tooltip placement='bottom' text="Hello, how are you?">
-            <p className='highlight mb-10'>Ho!</p>
+            <p className='highlight mb-10'>Hover me!</p>
           </Tooltip>
         </Card>
       </div>
