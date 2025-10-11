@@ -353,7 +353,7 @@ input[type="checkbox"]:checked::before {
   right: 10px;
 }
 .overlay {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
   bottom: 0;
   left: 0;
   position: fixed;
