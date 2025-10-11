@@ -365,13 +365,13 @@ input[type="checkbox"]:checked::before {
   right: 10px;
   top: 10px;
 }
-.overlay .nav-btn {
+.nav-btn {
   height: 150px;
   left: 10%;
   position: fixed;
   top: 45%;
 }
-.overlay .nav-btn-next {
+.nav-btn-next {
   left: 80%;
 }
 /** Overlay Carousel **/
@@ -390,6 +390,25 @@ input[type="checkbox"]:checked::before {
 
 /* Media Queries for desktop-first design */
 /** Mobile device breakpoint **/
+@media (max-width: 992px) {
+  .nav-btn-prev {
+    left: 5%;
+  }
+  .nav-btn-next {
+    left: 85%;
+  }
+  .carousel-container.carousel-container--overlay {
+    height: 600px;
+    width: 600px;
+  }
+  .carousel-container.carousel-container--overlay > .carousel {
+    height: 584px;
+    width: 3000px;
+  }
+  .carousel-container.carousel-container--overlay > .carousel > img {
+    width: 580px;
+  }
+}
 @media (max-width: 768px) {
   .carousel-container {
     height: 300px;
@@ -401,6 +420,27 @@ input[type="checkbox"]:checked::before {
   }
   .carousel img {
     width: 280px;
+  }
+  .carousel-container.carousel-container--overlay {
+    height: 400px;
+    width: 400px;
+  }
+  .carousel-container.carousel-container--overlay > .carousel {
+    height: 384px;
+    width: 2000px;
+  }
+  .carousel-container.carousel-container--overlay > .carousel > img {
+    width: 380px;
+  }
+  .nav-btn-prev,
+  .nav-btn-next {
+    padding: .5em;
+  }
+  .nav-btn-prev {
+    left: 1%;
+  }
+  .nav-btn-next {
+    left: 86%;
   }
   .sm\:d-inline {
     display: inline;
