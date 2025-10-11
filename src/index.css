@@ -204,6 +204,9 @@ input[type="checkbox"]:checked::before {
 .mt-20 {
   margin-top: 20px;
 }
+.mt-50 {
+  margin-top: 50px;
+}
 /** Padding Utilities **/
 .p-5 {
   padding: 5px;
@@ -236,8 +239,15 @@ input[type="checkbox"]:checked::before {
 .bg-primary {
   background: var(--primary-bg);
 }
+/** Miscellaneous **/
 .d-none {
   display: none;
+}
+.c-pointer {
+  cursor: pointer;
+}
+.p-absolute {
+  position: absolute;
 }
 /** Text Utilities **/
 .t-strike {
@@ -317,6 +327,7 @@ input[type="checkbox"]:checked::before {
   color: var(--primary-color);
   font-weight: bold;
 }
+/** Carousel **/
 .carousel-container {
   background: var(--primary-color);
   height: 500px;
@@ -325,7 +336,6 @@ input[type="checkbox"]:checked::before {
   position: relative;
   width: 500px;
 }
-/** Carousel **/
 .carousel-container > .carousel {
   height: 484px;
   position: absolute;
@@ -337,6 +347,45 @@ input[type="checkbox"]:checked::before {
   height: 100%;
   object-fit: contain;
   width: 480px;
+}
+.carousel-icon {
+  bottom: 5px;
+  right: 10px;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.7);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+.overlay-close {
+  right: 10px;
+  top: 10px;
+}
+.overlay .nav-btn {
+  height: 150px;
+  left: 10%;
+  position: fixed;
+  top: 45%;
+}
+.overlay .nav-btn-next {
+  left: 80%;
+}
+/** Overlay Carousel **/
+.carousel-container.carousel-container--overlay {
+  background: transparent;
+  height: 800px;
+  width: 800px;
+}
+.carousel-container.carousel-container--overlay > .carousel {
+  height: 784px;
+  width: 4000px;
+}
+.carousel-container.carousel-container--overlay > .carousel > img {
+  width: 780px;
 }
 
 /* Media Queries for desktop-first design */
