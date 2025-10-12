@@ -20,7 +20,7 @@ export default function Todo({ className }) {
 
       return (
         <div className='mb-10 d-flex d-x-between d-y-center' key={id}>
-          <input type='checkbox' className='input-check mr-10' onChange={() => handleCheckboxClick(id)} checked={isComplete} value="" />
+          <input name="todo-input" type='checkbox' className='input-check mr-10' onChange={() => handleCheckboxClick(id)} checked={isComplete} value="" />
           <span className={itemClassName}>{val}</span>
           <div>
             <button onClick={() => editList(id)} className='btn fs-normal sm mr-10'>Edit</button>

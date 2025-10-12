@@ -1,0 +1,17 @@
+.tabs-header {
+  border-bottom: 1px solid var(--light-color);
+  position: relative;
+}
+.tabs-title {
+  padding: 0.5em 0;
+  width: 80px;
+}
+.tabs-marker {
+  bottom: 0;
+  border: 1px solid var(--theme-color);
+  position: absolute;
+  transform: translateX(0);
+  transition: transform .25s ease-in-out;
+  width: 80px;
+  will-change: transform;
+}

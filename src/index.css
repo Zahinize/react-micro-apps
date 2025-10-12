@@ -269,6 +269,10 @@ input[type="checkbox"]:checked::before {
 .fs-large {
   font-size: var(--fs-large);
 }
+/** Fonts **/
+.f-bold {
+  font-weight: bold;
+}
 
 /** Component Styles **/
 #root {

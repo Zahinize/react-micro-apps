@@ -7,8 +7,15 @@ import Stopwatch from './components/StopWatch/Stopwatch';
 import ProgressBar from './components/ProgressBar';
 import ImageCarousel from './components/ImageCarousel';
 import Tooltip from './components/Tooltip/Tooltip';
+import Tabs from './components/Tabs/Tabs';
 
 export default function App() {
+  const tabsData = [
+    {title: "Counter", content: <Counter />},
+    {title: "Tooltip", content: <Tooltip text="Good Luck!"><span className='highlight'>Hover me!</span></Tooltip>},
+    {title: "Todo", content: <Todo />},
+    {title: "Timer", content: <Timer />},
+  ];
 
   return (
     <div className='root-container d-flex d-column'>
@@ -22,21 +29,27 @@ export default function App() {
         <Card heading='Counter'>
           <Counter />
         </Card>
+
         <Card heading="Todo">
           <Todo />
         </Card>
+
         <Card heading="Timer">
           <Timer />
         </Card>
+
         <Card heading="Stopwatch">
           <Stopwatch />
         </Card>
+
         <Card heading='Progress Bar'>
           <ProgressBar width={300} />
         </Card>
+
         <Card heading="Image Carousel">
           <ImageCarousel />
         </Card>
+
         <Card heading='Tooltip'>
           <Tooltip text="I am a tooltip :)">
             <p className='highlight mb-10'>Hover me to see a tooltip!</p>
@@ -55,6 +68,10 @@ export default function App() {
           <Tooltip placement='bottom' text="Hello, how are you?">
             <p className='highlight mb-10'>Hover me!</p>
           </Tooltip>
+        </Card>
+
+        <Card heading='Tabs'>
+          <Tabs data={tabsData} />
         </Card>
       </div>
       <span className="c-light d-flex d-x-center d-y-center mb-50">
