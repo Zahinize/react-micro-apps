@@ -1,0 +1,12 @@
+.label-container {
+  height: 200px;
+  width: 350px;
+}
+.label {
+  background: var(--theme-light-color);
+  border: 1.5px solid var(--theme-color);
+  border-radius: var(--br-radius);
+  display: inline-block;
+  font-size: 0.85em;
+  padding: 0.3em;
+}

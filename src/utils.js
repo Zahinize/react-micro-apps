@@ -40,4 +40,23 @@ const setLocalStorage = (key, value) => {
   }
 }
 
-export { formatTime, formatMilliSec, setMinMaxItems, getRandomStr, setLocalStorage, getLocalStorage };
+function debounce(fn, delay = 1000) {
+    let timer;
+
+    function debounced(...args) {
+        timer ? clearTimeout(timer) : null;
+        timer = setTimeout(() => {
+            fn(...args);
+        }, delay);
+    }
+
+    debounced.cancel = () => {
+        clearTimeout(timer);
+        timer = null;
+    };
+
+    return debounced;
+}
+
+export { formatTime, formatMilliSec, setMinMaxItems, 
+  getRandomStr, setLocalStorage, getLocalStorage, debounce };

@@ -8,6 +8,7 @@ import ProgressBar from './components/ProgressBar';
 import ImageCarousel from './components/ImageCarousel';
 import Tooltip from './components/Tooltip/Tooltip';
 import Tabs from './components/Tabs/Tabs';
+import AutoComplete from './components/AutoComplete/AutoComplete';
 
 export default function App() {
   const tabsData = [
@@ -72,6 +73,10 @@ export default function App() {
 
         <Card heading='Tabs'>
           <Tabs data={tabsData} />
+        </Card>
+
+        <Card heading='Search Box'>
+          <AutoComplete />
         </Card>
       </div>
       <span className="c-light d-flex d-x-center d-y-center mb-50">
