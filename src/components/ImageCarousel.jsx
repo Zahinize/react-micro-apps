@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Expand, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { IMG_ARR_NATURE } from "../constants";
 
 function ImageCarousel() {
   const [translateX, setTranslateX] = useState(0);
@@ -8,13 +9,7 @@ function ImageCarousel() {
   const carouselRef = useRef(null);
   const translateWidthRef = useRef(0);
   const maxTranslateWidthRef = useRef(0);
-  const imgArr = [
-    "https://images.unsplash.com/photo-1757263005786-43d955f07fb1?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1506220926022-cc5c12acdb35?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1757094866827-c4970619854d?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1744749583027-eaef2cf563ba?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1757664171309-f5c082f8d64c?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  ];
+  const imgArr = IMG_ARR_NATURE;
 
   useEffect(() => {
     if (isOverlay) {

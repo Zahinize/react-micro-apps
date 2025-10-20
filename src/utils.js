@@ -41,21 +41,21 @@ const setLocalStorage = (key, value) => {
 }
 
 function debounce(fn, delay = 1000) {
-    let timer;
+  let timer;
 
-    function debounced(...args) {
-        timer ? clearTimeout(timer) : null;
-        timer = setTimeout(() => {
-            fn(...args);
-        }, delay);
-    }
+  function debounced(...args) {
+    timer ? clearTimeout(timer) : null;
+    timer = setTimeout(() => {
+        fn(...args);
+    }, delay);
+  }
 
-    debounced.cancel = () => {
-        clearTimeout(timer);
-        timer = null;
-    };
+  debounced.cancel = () => {
+    clearTimeout(timer);
+    timer = null;
+  };
 
-    return debounced;
+  return debounced;
 }
 
 export { formatTime, formatMilliSec, setMinMaxItems, 
